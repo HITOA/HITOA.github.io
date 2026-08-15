@@ -16,12 +16,20 @@ export default {
   //   }
   // ],
 
+  pages: [
+    {
+      name: "Sine and Cosine",
+      path: "/sin-cos"
+    }
+  ],
+
   // Content to add to the head of the page, e.g. for a favicon:
   // head: '<link rel="icon" href="observable.png" type="image/png" sizes="32x32">',
 
   // The path to the source root.
   root: "src",
 
+  theme: "slate",
   // Some additional configuration options and their defaults:
   // theme: "default", // try "light", "dark", "slate", etc.
   // header: "", // what to show in the header (HTML)
