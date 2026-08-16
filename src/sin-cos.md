@@ -14,7 +14,7 @@ Before we can explore these concepts, let's first understand what sine and cosin
 We will also see how ${tex`\sin(\theta)`} and ${tex`\cos(\theta)`} aren't simply two separate ratio, but can be interpreted as coordinate as well.
 
 The origin of sine, cosine, and other trigonometric functions seems to be tied to astronomy and calculating distances.  
-Greek astronomers and mathematicians (most notably Hipparchus and Ptolemy) used a segment joining two points on a circle, called a chord, to define the first form of trigonometric functions.  
+Greek astronomers and mathematicians (most notably Hipparchus and Ptolemy) used a segment joining two points on a circle, called a chord to define the first form of trigonometric functions.  
 Ptolemy used a circle with a diameter of 120 units. Given an angle ${tex`\theta`}, as it goes from
 ${tex`0`} to ${tex`\pi`} radians, the chord of an arc of ${tex`\theta`} goes from 0 to 120 (the diameter of the circle).
 
@@ -22,11 +22,11 @@ ${tex`0`} to ${tex`\pi`} radians, the chord of an arc of ${tex`\theta`} goes fro
 import * as JXG from "jsxgraph";
 ```
 
+<div id="jsxgraph1" style="width: 400px; height: 400px; margin-left: 100px;"></div>
+
 ```js
 {
-    const div = html`<div style="width: 400px; height: 400px;">`;
-
-    const board = JXG.JSXGraph.initBoard(div, {
+    const board = JXG.JSXGraph.initBoard("jsxgraph1", {
         boundingbox: [-170, 170, 170, -170], 
         axis: false,
         showCopyright: false, 
@@ -59,8 +59,6 @@ import * as JXG from "jsxgraph";
             strokeColor: "steelblue", 
         }
     });
-
-    display(div);
 }
 ```
 
@@ -75,12 +73,11 @@ forming two right triangles. There are a few things to note by doing this.
 - The opposite side of each right triangles relative to the angle of interest is exactly half the chord.
 - The angle of interest is exactly half of ${tex`\theta`}.
 
+<div id="jsxgraph2" style="width: 400px; height: 400px; margin-left: 100px;"></div>
 
 ```js
 {
-    const div = html`<div style="width: 400px; height: 400px;">`;
-
-    const board = JXG.JSXGraph.initBoard(div, {
+    const board = JXG.JSXGraph.initBoard("jsxgraph2", {
         boundingbox: [-1.4, 1.4, 1.4, -1.4], 
         axis: false,
         showCopyright: false, 
@@ -130,8 +127,6 @@ forming two right triangles. There are a few things to note by doing this.
         name: "",
         dash: 2
     });
-
-    display(div);
 }
 ```
 
@@ -162,11 +157,11 @@ As the opposite side is half the length of the chord, this leads to the equality
 ```
 The sine being a half-chord was its original definition, given by the Indian mathematician Aryabhata. The name "sine" being unrelated to "half-chord" comes from a translation error by medieval scholars. Indian texts were first translated into Arabic. "jya-ardha", the term used for half-chord, got shortened to "jya", and then translated phonetically by Arabic scholars as "jiba", a word with no meaning by itself in Arabic. It was later misinterpreted as "jaib", an Arabic word meaning "bay" or "fold". When it finally got translated into Latin, it was translated as sinus, the closest translation to this misinterpretation.
 
+<div id="jsxgraph3" style="width: 400px; height: 400px; margin-left: 100px;"></div>
+
 ```js
 {
-    const div = html`<div style="width: 400px; height: 400px;">`;
-
-    const board = JXG.JSXGraph.initBoard(div, {
+    const board = JXG.JSXGraph.initBoard("jsxgraph3", {
         boundingbox: [-1.4, 1.4, 1.4, -1.4], 
         axis: false,
         showCopyright: false, 
@@ -228,8 +223,6 @@ The sine being a half-chord was its original definition, given by the Indian mat
             strokeColor: "steelblue", 
         }
     });
-
-    display(div);
 }
 ```
 
@@ -244,11 +237,11 @@ the chord for convenience of notation while working with sin, changing the earli
 ```
 Let's also name one of the point at the end of the chord ${tex`p_1`} for future reference.
 
+<div id="jsxgraph4" style="width: 400px; height: 400px; margin-left: 100px;"></div>
+
 ```js
 {
-    const div = html`<div style="width: 400px; height: 400px;">`;
-
-    const board = JXG.JSXGraph.initBoard(div, {
+    const board = JXG.JSXGraph.initBoard("jsxgraph4", {
         boundingbox: [-1.4, 1.4, 1.4, -1.4], 
         axis: false,
         showCopyright: false, 
@@ -317,8 +310,6 @@ Let's also name one of the point at the end of the chord ${tex`p_1`} for future 
             strokeColor: "steelblue", 
         }
     });
-
-    display(div);
 }
 ```
 
@@ -331,17 +322,18 @@ r = \sqrt{x²+y²}
 ```
 Generalizing coordinates using ${tex`\sin(\theta)`} and ${tex`\cos(\theta)`} is then simply a matter of scaling by ${tex`r`}.
 
+<div id="jsxgraph5" style="width: 600px; height: 600px;"></div>
 
 ```js
 {
-    const div = html`<div style="width: 600px; height: 600px;">`;
 
-    const board = JXG.JSXGraph.initBoard(div, {
+    const board = JXG.JSXGraph.initBoard('jsxgraph5', {
         boundingbox: [-5.0, 5.0, 5.0, -5.0], 
         axis: false,
         showCopyright: false, 
         showNavigation: false
     });
+    board.resizeContainer(600, 600, false, false);
 
     const center = board.create("point", [0, 0], {name: "", fixed: true, size: 2});
 
@@ -404,8 +396,6 @@ Generalizing coordinates using ${tex`\sin(\theta)`} and ${tex`\cos(\theta)`} is 
     });
 
     const circle = board.create("circle", [center, () => Math.sqrt(p0.X() * p0.X() + p0.Y() * p0.Y())], {strokeColor: "gray", strokeOpacity: 0.4});
-    
-    display(div);
 }
 ```
 
