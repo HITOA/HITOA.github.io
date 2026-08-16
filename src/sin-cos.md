@@ -362,7 +362,7 @@ Generalizing coordinates using ${tex`\sin(\theta)`} and ${tex`\cos(\theta)`} is 
     board.create("segment", [center, p1], {
         strokeColor: "orange", 
         strokeWidth: 2,
-        name: () => `r cos(θ) = ${Math.round((Math.cos(angle.Value()) + Number.EPSILON) * 100) / 100}`,
+        name: () => `r cos(θ) = ${Math.round((Math.sqrt(p0.X() * p0.X() + p0.Y() * p0.Y()) * Math.cos(angle.Value()) + Number.EPSILON) * 100) / 100}`,
         dash: 2,
         withLabel: true,
         label: {
@@ -374,7 +374,7 @@ Generalizing coordinates using ${tex`\sin(\theta)`} and ${tex`\cos(\theta)`} is 
     board.create("segment", [p1, p0], {
         strokeColor: "orange", 
         strokeWidth: 2,
-        name: () => `r sin(θ) = ${Math.round((Math.sin(angle.Value()) + Number.EPSILON) * 100) / 100}`,
+        name: () => `r sin(θ) = ${Math.round((Math.sqrt(p0.X() * p0.X() + p0.Y() * p0.Y()) * Math.sin(angle.Value()) + Number.EPSILON) * 100) / 100}`,
         dash: 2,
         withLabel: true,
         label: {
