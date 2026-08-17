@@ -20,6 +20,10 @@ export default {
     {
       name: "Sine and Cosine",
       path: "/sin-cos"
+    },
+    {
+      name: "Complex Numbers",
+      path: "/complex-numbers"
     }
   ],
 
