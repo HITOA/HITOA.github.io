@@ -163,15 +163,7 @@ This can be interpreted as translation on the complex plane. Let's draw some arr
     })
 }
 ```
-Simple enough. Complex numbers also have their own special operation, called the conjugate. Conjugating a complex number is simply inversing its imaginary part. The conjugate of a complex number ${tex`z`} for ${tex`z = a+bi`} is expressed like so 
-```tex
-\overline{z} = \overline{a+bi} = a+(-bi)=a-bi
-```
-Both ${tex`z`} and its conjugate ${tex`\overline{z}`} can be solutions to a quadratic equation, as well as being useful to take the absolute value of a complex number ${tex`z\cdot\overline{z}=|z|²`}.
-
-On the complex plane, conjugating a complex number result in reflecting its position across the horizontal axis (the real axis).
-
-Now let's tackle multiplication. It will seem a bit weird at first as we use the rectangular form of the complex number. But as we progress, we will see a more intuitive representation of complex numbers multiplication using polar form. first, using the rectangular form, let's see what multiplying two complex numbers ${tex`z = a+bi`} and ${tex`w = c+di`} gives us.
+Simple enough. Now let's tackle multiplication. It will seem a bit weird at first as we use the rectangular form of the complex number. But as we progress, we will see a more intuitive representation of complex numbers multiplication using polar form. first, using the rectangular form, let's see what multiplying two complex numbers ${tex`z = a+bi`} and ${tex`w = c+di`} gives us.
 
 ```tex
 \begin{aligned}
@@ -331,60 +323,67 @@ z \cdot w &= r_1\cdot\mathrm{e}^{\theta_1i} \cdot r_2\cdot\mathrm{e}^{\theta_2i}
 &= r_1 r_2 \cdot \mathrm{e}^{i(\theta_1+\theta_2)} \quad &\text{Pull out imaginary unit}
 \end{aligned}
 ```
-This is way easier to understand intuitivelly. what is happening here is that multiplying two complex numbers together result in multiplying their radius and summing their angle.
-
-
-<div id="jsxgraph4" style="width: 400px; height: 400px; margin-left: 100px;"></div>
-
-```js
-{
-    const board = complexPlane("jsxgraph4", { width: 5.0, height: 5.0 });
-    
-    const z = board.create("point", [2.0, 1.0], {
-        name: "z", 
-        showInfobox: false,
-        size: 4, 
-        color: "steelblue",
-        label: {
-            strokeColor: "steelblue"
-        }
-    });
-
-    const w = board.create("point", [-1.0, -1.0], {
-        name: "w", 
-        showInfobox: false,
-        size: 4, 
-        color: "orange",
-        label: {
-            strokeColor: "orange"
-        }
-    });
-
-    const zdw = board.create("point", [
-        () => {
-            return z.X() * w.X() - z.Y() * w.Y();
-        }, 
-        () => {
-            return z.X() * w.Y() + z.Y() * w.X();
-        }], {
-        name: "", 
-        showInfobox: false,
-        size: 2,
-        fixed: true,
-        color: "gray"
-    });
-
-    board.create("arrow", [[0, 0], z], {
-        strokeColor: "steelblue"
-    })
-
-    board.create("arrow", [[0, 0], w], {
-        strokeColor: "orange"
-    })
-
-    board.create("arrow", [[0, 0], zdw], {
-        strokeColor: "gray"
-    })
-}
+This is way easier to understand intuitivelly. what is happening here is that multiplying two complex numbers together result in multiplying their radius and summing their angle. Dividing is a bit messier, but there is a way to make our lives easier. Instead of trying to divide two complex number together such as ${tex`\frac{z}{w}`} we can instead try to multiply ${tex`z`} by the inverse of ${tex`w`} meaning ${tex`w^{-1}`} or ${tex`\frac{1}{w}`}. So, let's see what happens if we try to invert a complex number in its polar form. It will be easier as we can profit from the fact that ${tex`\frac{1}{\mathrm{e}^{x}}`} equal ${tex`\mathrm{e}^{-x}`}
+```tex
+z^{-1}=\frac{1}{r\cdot\mathrm{e}^{\theta i}}=\frac{1}{r}\cdot\mathrm{e}^{-\theta i}
 ```
-To Be Continued
+This end up inverting its radius, and negating its angle. Now we can try division this way
+```tex
+\begin{aligned}
+\frac{z}{w} &= z \cdot w^{-1} \\
+&=r_1\cdot\mathrm{e}^{\theta_1 i} \cdot \frac{1}{r_2}\cdot\mathrm{e}^{-\theta_2 i} \\
+&=\frac{r_1}{r_2}\cdot\mathrm{e}^{i(\theta_1-\theta_2)}
+\end{aligned}
+```
+Which is, as one would expect, the opposite of the multiplication. Instead of multiplying their radius and adding their angle, we divide their radius and subtract their angle instead.
+
+# Sine and Cosine.. Again
+There is another special operation that we haven't tackled yet, the conjugate. The operation itself is really simple: taking the conjugate of a complex number is simply negating its imaginary part. It is denoted with a line over the expression. In rectangular form, this means
+```tex
+\overline{z} = \overline{a+bi} = a-bi
+```
+or in polar form, the equivalent is negating its angle
+```tex
+\overline{z} = \overline{r\mathrm{e}^{\theta i}} = r\mathrm{e}^{-\theta i}
+```
+Both a complex number and its conjugate can be a solution to a quadratic equation, but there are also a few interesting things that happen when operating a complex number against its own conjugate. Let's see what happens, in rectangular form, if we add ${tex`z`} and its own conjugate.
+```tex
+\begin{aligned}
+z+\overline{z}&=(a+bi)+(a-bi) \\
+&=a+a+bi-bi \\
+&=2a
+\end{aligned}
+```
+We end up with its real part times ${tex`2`}. This can be useful for a number of reasons, as we'll see later on. Let's see what happens if we subtract instead.
+```tex
+\begin{aligned}
+z-\overline{z}&=(a+bi)-(a-bi) \\
+&=a+bi-a+bi \\
+&=2bi
+\end{aligned}
+```
+We end up with its imaginary part times ${tex`2i`}. Finally, let's look at multiplying; here both the polar and rectangular forms can be useful to interpret what's happening.
+```tex
+\begin{aligned}
+z\cdot\overline{z}&=(a+bi)\cdot(a-bi) \\
+&=a² - a \cdot bi + bi \cdot a - bi \cdot bi \\
+&=a² - bi \cdot bi \\
+&=a² + b²
+\end{aligned}
+```
+We end up with the sum of the squares of each part. In the polar form, this would give us ${tex`r²`} as well; in other words, this gives us the squared distance from the origin on the complex plane. Note that these three operations give us the length of each side of a right triangle whose hypotenuse goes from the origin to our complex number on the complex plane.
+
+There are some fun things I'd like to tackle now. We can first remember that for any value of ${tex`\theta`}, 
+${tex`\mathrm{e}^{\theta i}`} gives us a complex number that, if plotted on the complex plane, lies on the unit circle at angle ${tex`\theta`}. Note that this is all we need to derive the complex forms of sin and cos. I would invite you to try to derive it yourself before continuing to read. 
+
+If we form a right triangle whose hypotenuse goes from the origin to ${tex`\mathrm{e}^{\theta i}`}, and we take the length of its opposite side and adjacent side, because the hypotenuse is 1, these are exactly the definitions of sin and cos. This means that all we have to do is isolate the imaginary part for sin and the real part for cos. We now have all the elements to do that. Let's focus on sin for now. We know that subtracting a complex number by its own conjugate gives us two times its imaginary part, so let's first do that, and divide by ${tex`2i`} to retrieve its imaginary part. We will use the polar form in this case, and because we are concerned about sin and the unit circle, ${tex`r`} will always be one; therefore we can just omit it, giving us this formula
+```tex
+\frac{\mathrm{e}^{\theta i}-\mathrm{e}^{-\theta i}}{2i}
+```
+For cos, this is just a matter of adding instead of subtracting, and dividing by ${tex`2`} instead of ${tex`2i`}, as we are isolating the real part.
+```tex
+\frac{\mathrm{e}^{\theta i}+\mathrm{e}^{-\theta i}}{2}
+```
+These are known as the complex forms of sin and cos, and are very useful for many things like the Fourier transform, solving differential equations, describing oscillations, and many more.
+
+I believe we now have a good grasp of complex numbers, and will be able to work with them in the future. This will be very useful for anything related to digital signal processing, from the obvious Fourier transform, to any other kind of tool like the z-transform or Laplace transform, that we will eventually explore in future chapters.
