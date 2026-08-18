@@ -339,7 +339,7 @@ Which is, as one would expect, the opposite of the multiplication. Instead of mu
 
 ---
 
-# Sine and Cosine.. Again
+## Sine and Cosine.. Again
 There is another special operation that we haven't tackled yet, the conjugate. The operation itself is really simple: taking the conjugate of a complex number is simply negating its imaginary part. It is denoted with a line over the expression. In rectangular form, this means
 ```tex
 \overline{z} = \overline{a+bi} = a-bi
