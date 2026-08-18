@@ -33,7 +33,7 @@ z = a+bi
 ``` 
 with ${tex`a`} being the real part, and ${tex`bi`} the imaginary part. A complex number whose real part is 0 is called purely imaginary, as well as purely real if its imaginary part is 0.
 
-A really useful way for us to represent complex number is with geometry. The same way we can represent all the real number or imaginary number individually on one axis, we can represent complex number on a plane, that has for horizontal axis all the real number, and for vertical axis all the imaginary number. We can then plot any complex number ${tex`a+bi`} as a point whose coordinate are ${tex`(a, b)`}.
+A really useful way for us to represent complex number is with geometry. The same way we can represent all the real number or imaginary number individually on one axis, we can represent complex number on a plane, that has for horizontal axis all the real number, and for vertical axis all the imaginary number. We can then plot any complex number ${tex`a+bi`} as a point whose coordinates are ${tex`(a, b)`}.
 
 
 <div id="jsxgraph1" style="width: 400px; height: 400px; margin-left: 100px;"></div>
@@ -45,16 +45,16 @@ A really useful way for us to represent complex number is with geometry. The sam
     const z = complexPoint(board, { x: 2.0, y: 2.0 });
 }
 ```
-This is called the complex plane, and will help us visualize what happen and help us build an intuition when doing complex numbers operation. Note that this way of expressing complex numbers is called the rectangular form. We will talk about the polar form of a complex numbers whose representation is a little bit different later in this chapter when talking about multiplication.
+This is called the complex plane, and will help us visualize what happens and help us build an intuition when doing complex numbers operation. Note that this way of expressing complex numbers is called the rectangular form. We will talk about the polar form of a complex number whose representation is a little bit different later in this chapter when talking about multiplication.
 
-Let's first see what happens when we add and subtract complex number. Let's consider two complex numbers ${tex`z=a+bi`} and ${tex`w=c+di`}. Addition is defined as independently summing their real part and their imaginary part. subtraction is defined in a similar fashion as well:
+Let's first see what happens when we add and subtract complex numbers. Let's consider two complex numbers ${tex`z=a+bi`} and ${tex`w=c+di`}. Addition is defined as independently summing their real part and their imaginary part. Subtraction is defined by subtracting each part instead
 ```tex
 z+w = (a+bi)+(c+di) = (a+c)+i(b+d)
 ```
 ```tex
 z-w = (a+bi)-(c+di) = (a-c)+i(b-d)
 ```
-This can be interpreted as translation on the complex plane. Let's draw some arrows to visualize it better.
+This can be interpreted as a translation on the complex plane. Let's draw some arrows to visualize it better.
 
 <div id="jsxgraph2" style="width: 400px; height: 400px; margin-left: 100px;"></div>
 
@@ -163,7 +163,7 @@ This can be interpreted as translation on the complex plane. Let's draw some arr
     })
 }
 ```
-Simple enough. Now let's tackle multiplication. It will seem a bit weird at first as we use the rectangular form of the complex number. But as we progress, we will see a more intuitive representation of complex numbers multiplication using polar form. first, using the rectangular form, let's see what multiplying two complex numbers ${tex`z = a+bi`} and ${tex`w = c+di`} gives us.
+Simple enough. Now let's tackle multiplications. It will seem a bit weird at first as we use the rectangular form of the complex number. But as we progress, we will see a more intuitive representation of complex numbers multiplication using the polar form. First, using the rectangular form, let's see what multiplying two complex numbers ${tex`z = a+bi`} and ${tex`w = c+di`} gives us.
 
 ```tex
 \begin{aligned}
@@ -239,7 +239,7 @@ That's not really helping. Now you could say it looks kind of rotate-ish, but th
 
 ## Euler Formula and Polar Form  
 
-First, let's try to find out what happens, and what does it means to take the exponential of an imaginary number as in ${tex`\mathrm{e}^{bi}`}. Something we can do is find the derivative of ${tex`\mathrm{e}^{bi}`} and see if we can understand something by reading how it changes.
+First, let's try to find out what happens, and what it means to take the exponential of an imaginary number as in ${tex`\mathrm{e}^{bi}`}. Something we can do is find the derivative of ${tex`\mathrm{e}^{bi}`} and see if we can understand something by reading how it changes.
 let's consider
 ```tex
 f(x)=\mathrm{e}^{xi}
@@ -318,16 +318,16 @@ Now if we try to multiply them together, this will be a lot simpler:
 ```tex
 \begin{aligned}
 z \cdot w &= r_1\cdot\mathrm{e}^{\theta_1i} \cdot r_2\cdot\mathrm{e}^{\theta_2i} \\
-&= r_1 r_2 \cdot \mathrm{e}^{\theta_1i}\mathrm{e}^{\theta_2i} \quad &\text{Regroup exponantial together} \\
+&= r_1 r_2 \cdot \mathrm{e}^{\theta_1i}\mathrm{e}^{\theta_2i} \quad &\text{Regroup exponential together} \\
 &= r_1 r_2 \cdot \mathrm{e}^{\theta_1i+\theta_2i} \quad &\text{Exponantials turn sum into product} \\
 &= r_1 r_2 \cdot \mathrm{e}^{i(\theta_1+\theta_2)} \quad &\text{Pull out imaginary unit}
 \end{aligned}
 ```
-This is way easier to understand intuitivelly. what is happening here is that multiplying two complex numbers together result in multiplying their radius and summing their angle. Dividing is a bit messier, but there is a way to make our lives easier. Instead of trying to divide two complex number together such as ${tex`\frac{z}{w}`} we can instead try to multiply ${tex`z`} by the inverse of ${tex`w`} meaning ${tex`w^{-1}`} or ${tex`\frac{1}{w}`}. So, let's see what happens if we try to invert a complex number in its polar form. It will be easier as we can profit from the fact that ${tex`\frac{1}{\mathrm{e}^{x}}`} equal ${tex`\mathrm{e}^{-x}`}
+This is way easier to understand intuitivelly. What is happening here is that multiplying two complex numbers together results in multiplying their radius and summing their angle. Dividing is a bit messier, but there is a way to make our lives easier. Instead of trying to divide two complex numbers together such as ${tex`\frac{z}{w}`} we can instead try to multiply ${tex`z`} by the inverse of ${tex`w`} meaning ${tex`w^{-1}`} or ${tex`\frac{1}{w}`}. So, let's see what happens if we try to invert a complex number in its polar form. It will be easier as we can profit from the fact that ${tex`\frac{1}{\mathrm{e}^{x}}`} equals ${tex`\mathrm{e}^{-x}`}
 ```tex
 z^{-1}=\frac{1}{r\cdot\mathrm{e}^{\theta i}}=\frac{1}{r}\cdot\mathrm{e}^{-\theta i}
 ```
-This end up inverting its radius, and negating its angle. Now we can try division this way
+This ends up inverting its radius, and negating its angle. Now we can try a division this way
 ```tex
 \begin{aligned}
 \frac{z}{w} &= z \cdot w^{-1} \\
@@ -373,12 +373,12 @@ z\cdot\overline{z}&=(a+bi)\cdot(a-bi) \\
 &=a² + b²
 \end{aligned}
 ```
-We end up with the sum of the squares of each part. In the polar form, this would give us ${tex`r²`} as well; in other words, this gives us the squared distance from the origin on the complex plane. Note that these three operations give us the length of each side of a right triangle whose hypotenuse goes from the origin to our complex number on the complex plane.
+We end up with the sum of the squares of each part. In the polar form, this would give us ${tex`r²`}. In other words, this gives us the squared distance from the origin on the complex plane. Note that these three operations almost give us the length of each side of a right triangle whose hypotenuse goes from the origin to our complex number on the complex plane.
 
 There are some fun things I'd like to tackle now. We can first remember that for any value of ${tex`\theta`}, 
 ${tex`\mathrm{e}^{\theta i}`} gives us a complex number that, if plotted on the complex plane, lies on the unit circle at angle ${tex`\theta`}. Note that this is all we need to derive the complex forms of sin and cos. I would invite you to try to derive it yourself before continuing to read. 
 
-If we form a right triangle whose hypotenuse goes from the origin to ${tex`\mathrm{e}^{\theta i}`}, and we take the length of its opposite side and adjacent side, because the hypotenuse is 1, these are exactly the definitions of sin and cos. This means that all we have to do is isolate the imaginary part for sin and the real part for cos. We now have all the elements to do that. Let's focus on sin for now. We know that subtracting a complex number by its own conjugate gives us two times its imaginary part, so let's first do that, and divide by ${tex`2i`} to retrieve its imaginary part. We will use the polar form in this case, and because we are concerned about sin and the unit circle, ${tex`r`} will always be one; therefore we can just omit it, giving us this formula
+If we form a right triangle whose hypotenuse goes from the origin to ${tex`\mathrm{e}^{\theta i}`}, and we take the length of its opposite side and adjacent side, because the hypotenuse is 1, these are exactly the definitions of sin and cos. This means that all we have to do is isolate the imaginary part for sin and the real part for cos. We now have all the elements to do that. Let's focus on sin for now. We know that subtracting a complex number by its own conjugate gives us two times its imaginary part, so let's first do that, and divide by ${tex`2i`} to retrieve its imaginary part. We will use the polar form in this case, and because we are interested about sin and the unit circle, ${tex`r`} will always be one, therefore we can just omit it, giving us this formula
 ```tex
 \frac{\mathrm{e}^{\theta i}-\mathrm{e}^{-\theta i}}{2i}
 ```
