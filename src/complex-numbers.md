@@ -337,6 +337,8 @@ This end up inverting its radius, and negating its angle. Now we can try divisio
 ```
 Which is, as one would expect, the opposite of the multiplication. Instead of multiplying their radius and adding their angle, we divide their radius and subtract their angle instead.
 
+---
+
 # Sine and Cosine.. Again
 There is another special operation that we haven't tackled yet, the conjugate. The operation itself is really simple: taking the conjugate of a complex number is simply negating its imaginary part. It is denoted with a line over the expression. In rectangular form, this means
 ```tex
