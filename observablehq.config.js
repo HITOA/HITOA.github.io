@@ -18,12 +18,22 @@ export default {
 
   pages: [
     {
-      name: "Sine and Cosine",
-      path: "/sin-cos"
+      name: "Disclaimer",
+      path: "/disclaimer"
     },
     {
-      name: "Complex Numbers",
-      path: "/complex-numbers"
+      name: "Math Fundamentals",
+      path: "/math-fundamentals",
+      pages: [
+        {
+          name: "Sine and Cosine",
+          path: "/sin-cos"
+        },
+        {
+          name: "Complex Numbers",
+          path: "/complex-numbers"
+        }
+      ]
     }
   ],
 
