@@ -32,6 +32,10 @@ export default {
         {
           name: "Complex Numbers",
           path: "/complex-numbers"
+        },
+        {
+          name: "Derivative",
+          path: "/derivative"
         }
       ]
     }
